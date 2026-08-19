@@ -1,5 +1,8 @@
 name: 刷步数
 
+permissions:
+  contents: write
+
 on:
   schedule:
     - cron: '21 1,4,7,12,14,23 * * *'
@@ -12,8 +15,6 @@ jobs:
     steps:
       - name: Checkout codes
         uses: actions/checkout@v5
-        with:
-          token: ${{ secrets.PAT }} #此处PAT需要申请，教程详见：README
       - name: Update system and install zsh
         run: |
           sudo -E apt-get -qq update
